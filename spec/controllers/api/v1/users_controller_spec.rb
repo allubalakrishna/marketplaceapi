@@ -10,7 +10,7 @@ describe Api::V1::UsersController do
     end
 
     it "returns information about a reporter in a hash" do
-      user_response = JSON.parse(response.body, symbolize_names: true)
+      user_response = json_response # this is the updated line
       expect(user_response[:email]).to eql @user.email
     end
 
@@ -27,7 +27,7 @@ describe Api::V1::UsersController do
       end
 
       it "renders the json represention for the user just created" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response # this is the updated line
         expect(user_response[:email]).to eql @user_attributes[:email]
       end
 
@@ -43,12 +43,12 @@ describe Api::V1::UsersController do
       end
 
       it "renders an errors json" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response # this is the updated line
         expect(user_response).to have_key(:errors)
       end
 
       it "renders the json errors on why the user could not be created" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response # this is the updated line
         expect(user_response[:errors][:email]).to include "can't be blank"
       end
 
@@ -65,7 +65,7 @@ describe Api::V1::UsersController do
       end
 
       it "renders the json representation for the user updated" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response # this is the updated line
         expect(user_response[:email]).to eql 'abc@gmail.com'
       end
 
@@ -79,12 +79,12 @@ describe Api::V1::UsersController do
       end
 
       it "renders an errors json" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response # this is the updated line
         expect(user_response).to have_key(:errors)
       end
 
       it "renders the json errors on why the user could not updated" do
-        user_response = JSON.parse(response.body, symbolize_names: true)
+        user_response = json_response # this is the updated line
         expect(user_response[:errors][:email]).to include "is invalid"
       end
 
